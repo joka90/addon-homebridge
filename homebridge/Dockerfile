@@ -8,20 +8,28 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # Setup base
 RUN \
     apk add --no-cache --virtual .build-dependencies \
-        avahi-dev=0.7-r1 \
-        g++=6.4.0-r8 \
-        libffi-dev=3.2.1-r4 \
-        make=4.2.1-r2 \
-        openssl-dev=1.0.2o-r2 \
-        python2=2.7.15-r1 \
+        avahi-dev \
+        g++\
+        libffi-dev \
+        make\
+        openssl-dev \
+        python2 \
+        bluez-dev \
+        eudev-dev \
+        linux-headers \
+        libusb-dev \
     \
     && apk add --no-cache \
-        avahi=0.7-r1 \
-        avahi-compat-libdns_sd=0.7-r1 \
-        dbus=1.10.24-r1 \
-        git=2.18.0-r0 \
-        nodejs=8.11.4-r0 \
-        nodejs-npm=8.11.4-r0 \
+        avahi \
+        avahi-compat-libdns_sd \
+        dbus \
+        git \
+        nodejs \
+        nodejs-npm \
+        bluez-libs \
+        bluez \
+        eudev \
+        libusb \
     \
     && npm set unsafe-perm true \
     \
@@ -29,6 +37,7 @@ RUN \
         node-gyp@3.8.0 \
         homebridge@0.4.44 \
         homebridge-homeassistant@3.1.0 \
+        homebridge-ranger \
     \
     && apk del --purge .build-dependencies
 
